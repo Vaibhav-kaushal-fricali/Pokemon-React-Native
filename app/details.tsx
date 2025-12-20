@@ -6,7 +6,11 @@ import { Stack } from "expo-router";
 
 export default function Details() {
   const params = useLocalSearchParams();
-  console.log("Params received:", params.name);
+  // console.log("Params received:", params.name);
+  // console.log(typeof params.name);
+  const name = params.name.toString().charAt(0).toUpperCase() + params.name.slice(1) //capitalise the first word and use that
+  // console.log("Name:", name)
+
 
   useEffect(() => {}, []);
 
@@ -20,8 +24,8 @@ export default function Details() {
   return (
     <>
       <Stack.Screen options={{ title: params.name as string }} />
-      <ScrollView contentContainerStyle={{ gap: 16, padding: 16 }}>
-        <Text style={styles.text}>Details Page for {params.name}</Text>
+      <ScrollView contentContainerStyle={{ gap: 16, padding: 16, justifyContent:"center", alignItems:"center" }}>
+        <Text style={styles.text}>Details of {name}</Text>
       </ScrollView>
     </>
   );
@@ -31,6 +35,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: "bold",
+    textDecorationLine:"underline",
     alignItems: "center",
     justifyContent: "center",
   }
