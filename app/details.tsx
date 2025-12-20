@@ -21,10 +21,17 @@ export default function Details() {
     <>
       <Stack.Screen options={{ title: params.name as string }} />
       <ScrollView contentContainerStyle={{ gap: 16, padding: 16 }}>
-        <Text>Details Page for {params.name}</Text>
+        <Text style={styles.text}>Details Page for {params.name}</Text>
       </ScrollView>
     </>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+    alignItems: "center",
+    justifyContent: "center",
+  }
+});
