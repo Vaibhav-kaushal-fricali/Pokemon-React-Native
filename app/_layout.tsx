@@ -6,8 +6,8 @@ export default function RootLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Pokemaniac",
-          headerTintColor: "blue",
+          title: "Pokemaniac by Fricali",
+          headerTintColor: "Yellow",
           headerShown: true,
           headerTitleAlign: "center",
         }}
