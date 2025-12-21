@@ -10,7 +10,7 @@ export default function Details() {
   // console.log(typeof params.name);
   const name = params.name.toString().charAt(0).toUpperCase() + params.name.slice(1) //this to capitalise the first word and use that
   // console.log("Name:", name)
-  const [pokeDetails, setPokeDetails] = useState(null); // do i need to write null or i can leave () as it is?? => Ans) () is undefined, whereas null means clearly we have nothing yet,,, If data comes later → start with null
+  const [pokeDetails, setPokeDetails] = useState({}); // do i need to write null or i can leave () as it is?? => Ans) () is undefined, whereas null means clearly we have nothing yet,,, If data comes later → start with null
 
   useEffect(()=>{
     if (params.name) {
@@ -25,10 +25,13 @@ export default function Details() {
     try {
       const response = await fetch (`https://pokeapi.co/api/v2/pokemon/${params.name}`)
       const data = await response.json();
-      console.log("data",data.stats) 
-      setPokeDetails(data);
-      console.log("pokedet:", pokeDetails) 
-      console.log(params.name) 
+      
+      const cleanedPokemon = {
+        height: data.height,
+        weight: data.weight,
+      }
+      setPokeDetails(cleanedPokemon);
+      console.log("Cleaned pokemon data",cleanedPokemon)
     } 
     catch (error) {
         console.error("Error fetching pokemon details:", error);
