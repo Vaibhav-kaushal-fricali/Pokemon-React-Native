@@ -25,11 +25,11 @@ export default function Details() {
     try {
       const response = await fetch (`https://pokeapi.co/api/v2/pokemon/${params.name}`)
       const data = await response.json();
-      console.log("data",data.stats) //this is showing undefined? => Ans) need to type exact key present in URL (results is not key)
+      console.log("data",data.stats) 
       setPokeDetails(data);
-      console.log("pokedet:", pokeDetails) //this is showing null?
-      console.log(params.name) //this shows the pokemon name i clicked onto showing params.name works but still the URL fetch is showing undefined why??
-    } // Also the url has many many things as uneccesary , how do i show which data i want .. for that i need to use return like i did in index??
+      console.log("pokedet:", pokeDetails) 
+      console.log(params.name) 
+    } 
     catch (error) {
         console.error("Error fetching pokemon details:", error);
   }
