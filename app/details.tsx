@@ -50,8 +50,8 @@ export default function Details() {
         <Text style={styles.text}>Details of {name}</Text>
         {pokeDetails && (
           <>
-            <Text> Height of this {params.name} is: {pokeDetails.height}  </Text>
-            <Text> Weight of this {params.name} is: {pokeDetails.weight}  </Text>
+            <Text style={styles.details}> Height of this {params.name} is: {pokeDetails.height}  </Text>
+            <Text style={styles.details}> Weight of this {params.name} is: {pokeDetails.weight}  </Text>
           </>
         )}
       </ScrollView>
@@ -66,5 +66,8 @@ const styles = StyleSheet.create({
     textDecorationLine:"underline",
     alignItems: "center",
     justifyContent: "center",
+  },
+  details: {
+    fontSize: 20
   }
 });
