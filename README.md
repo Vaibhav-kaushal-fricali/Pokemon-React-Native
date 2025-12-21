@@ -51,5 +51,5 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 =======
 # Pokemon-React-Native
-Okay lets see how it goes....
+Building a pokemon detailed cards, practicing REST APIs and stuff
 >>>>>>> 16010ddb6f1baa83bab7c9cc82ac8c06893f291d
