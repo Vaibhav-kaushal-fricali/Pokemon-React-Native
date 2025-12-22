@@ -68,6 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   details: {
-    fontSize: 20
+    fontSize: 20,
+    fontWeight:"400",
+    
   }
 });
