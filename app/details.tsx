@@ -10,6 +10,7 @@ export default function Details() {
   weight: number;
   image: string;
   types: string[]; //here types is array of objects which are strings so string[]
+  abilities: string[];
 };
   const params = useLocalSearchParams();
   // console.log("Params received:", params);
@@ -38,6 +39,7 @@ export default function Details() {
         weight: data.weight,
         image: data.sprites.front_default,
         types: data.types.map((t: any) => t.type.name), //Loops over API type, Extract only name.
+        abilities: data.abilities.map((item:any) => item.ability.name)
       }
       setPokeDetails(cleanedPokemon);
       console.log("Cleaned pokemon data",cleanedPokemon)
@@ -60,6 +62,10 @@ export default function Details() {
           />
             <Text style={styles.details}> Height of this {params.name} is: {pokeDetails.height}  </Text>
             <Text style={styles.details}> Weight of this {params.name} is: {pokeDetails.weight}  </Text>
+            <Text style={styles.details}>Abilities: </Text>
+            {pokeDetails.abilities.map((ability, index) => (
+            <Text key={index}>• {ability}</Text>
+            ))}
             <Text style={styles.details}>Types:</Text>
             {pokeDetails.types.map((type) => (
             <Text style={styles.details} key={type}>• {type}</Text>
