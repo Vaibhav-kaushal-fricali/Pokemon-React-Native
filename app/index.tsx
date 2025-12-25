@@ -77,36 +77,37 @@ export default function Index() {
   return (
     <ScrollView contentContainerStyle={{ gap: 16, padding: 16 }}>
       {pokemon.map((pokemon) => (
-        <Link key={pokemon.name}
-        href={{pathname: "/details", params: {name: pokemon.name}}}
-        style={{
+        <Link
+          key={pokemon.name}
+          href={{ pathname: "/details", params: { name: pokemon.name } }}
+          style={{
             //@ts-ignore
             backgroundColor: colorsByType[pokemon.types[0].type.name] + 55, // here number means opacity in hex
             borderRadius: 20,
             padding: 20,
           }}
         >
-        <View>
           <View>
-            <Text style={styles.name}>{pokemon.name}</Text>
-            <Text style={styles.type}>{pokemon.types[0].type.name}</Text>
+            <View>
+              <Text style={styles.name}>{pokemon.name}</Text>
+              <Text style={styles.type}>{pokemon.types[0].type.name}</Text>
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-around",
+              }}
+            >
+              <Image
+                source={{ uri: pokemon.image }}
+                style={{ width: 120, height: 120 }}
+              />
+              <Image
+                source={{ uri: pokemon.imageFront }}
+                style={{ width: 120, height: 120 }}
+              />
+            </View>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-around",
-            }}
-          >
-            <Image
-              source={{ uri: pokemon.image }}
-              style={{ width: 120, height: 120 }}
-            />
-            <Image
-              source={{ uri: pokemon.imageFront }}
-              style={{ width: 120, height: 120 }}
-            />
-          </View>
-        </View>
         </Link>
       ))}
 
