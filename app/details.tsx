@@ -8,6 +8,7 @@ export default function Details() {
  type PokemonDetails = {
   height: number;
   weight: number;
+  image: string;
 };
   const params = useLocalSearchParams();
   // console.log("Params received:", params);
@@ -34,6 +35,7 @@ export default function Details() {
       const cleanedPokemon = {
         height: data.height,
         weight: data.weight,
+        image: data.sprites.front_default,
       }
       setPokeDetails(cleanedPokemon);
       console.log("Cleaned pokemon data",cleanedPokemon)
@@ -50,6 +52,10 @@ export default function Details() {
         <Text style={styles.text}>Details of {name}</Text>
         {pokeDetails && (
           <>
+          <Image
+          source={{uri: pokeDetails.image}}
+          style={{width:150, height:150}}
+          />
             <Text style={styles.details}> Height of this {params.name} is: {pokeDetails.height}  </Text>
             <Text style={styles.details}> Weight of this {params.name} is: {pokeDetails.weight}  </Text>
           </>
