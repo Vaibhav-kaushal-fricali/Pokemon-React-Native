@@ -77,11 +77,11 @@ export default function Details() {
             </Text>
             <Text style={styles.details}>Abilities: </Text>
             {pokeDetails.abilities.map((ability, index) => (
-              <Text key={index}>• {ability}</Text>
+              <Text style={styles.subType} key={index}>• {ability}</Text>
             ))}
             <Text style={styles.details}>Types:</Text>
             {pokeDetails.types.map((type) => (
-              <Text style={styles.details} key={type}>
+              <Text style={styles.subType} key={type}>
                 • {type}
               </Text>
             ))}
@@ -104,4 +104,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "400",
   },
+  subType: {
+    fontSize: 18,
+    fontStyle: "italic",
+  }
 });
