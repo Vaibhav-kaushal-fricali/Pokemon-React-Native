@@ -85,34 +85,51 @@ export default function Details() {
         <Text style={styles.title}>Details of {name}</Text>
         {pokeDetails && (
           <View style={styles.card}>
-            <Image source={{ uri: pokeDetails.image }} style={styles.image} />
-            <Text style={styles.details}>
-              {" "}
-              Height of this {params.name} is: {pokeDetails.height}{" "}
-            </Text>
-            <Text style={styles.details}>
-              {" "}
-              Weight of this {params.name} is: {pokeDetails.weight}{" "}
-            </Text>
-            <Text style={styles.details}>Abilities: </Text>
-            {pokeDetails.abilities.map((ability, index) => (
-              <Text style={styles.subType} key={index}>
-                • {ability}
-              </Text>
-            ))}
-            <Text style={styles.details}>Types:</Text>
-            <View style={styles.typeContainer}>
-              {pokeDetails.types.map((type) => (
-                <View
-                  style={[
-                    styles.typePill,
-                    { backgroundColor: colorsByType[type] || "#ccc" },
-                  ]}
-                >
-                  <Text style={styles.typeText} key={type}>
-                    {type}
-                  </Text>
-                </View>
+            {/*Header Section*/}
+            <View>
+              <Image source={{ uri: pokeDetails.image }} style={styles.image} />
+              <Text style={styles.title}>{name}</Text>
+            </View>
+            {/**/}
+
+            {/* STATS Section*/}
+            <View style={styles.statsRow}>
+              <View style={styles.statBox}>
+                <Text style={styles.statLabel}>Height</Text>
+                <Text style={styles.statValue}>{pokeDetails.height}</Text>
+              </View>
+
+              <View style={styles.statBox}>
+                <Text style={styles.statLabel}>Weight</Text>
+                <Text style={styles.statValue}>{pokeDetails.weight}</Text>
+              </View>
+            </View>
+
+            {/* Types */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Types</Text>
+              <View style={styles.typeContainer}>
+                {pokeDetails.types.map((type) => (
+                  <View
+                    key={type}
+                    style={[
+                      styles.typePill,
+                      { backgroundColor: colorsByType[type] || "#ccc" },
+                    ]}
+                  >
+                    <Text style={styles.typeText}>{type}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+
+            {/* 4️⃣ ABILITIES */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Abilities</Text>
+              {pokeDetails.abilities.map((ability, index) => (
+                <Text key={index} style={styles.abilityText}>
+                  • {ability}
+                </Text>
               ))}
             </View>
           </View>
@@ -177,5 +194,50 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     textTransform: "capitalize",
+  },
+  header: {
+    alignItems: "center",
+    marginBottom: 16,
+  },
+
+  statsRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginBottom: 16,
+    width: "100%",
+  },
+
+  statBox: {
+    alignItems: "center",
+    padding: 12,
+    borderRadius: 10,
+    backgroundColor: "#f2f2f2",
+    minWidth: 100,
+  },
+
+  statLabel: {
+    fontSize: 12,
+    color: "#666",
+  },
+
+  statValue: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  section: {
+    width: "100%",
+    marginBottom: 12,
+  },
+
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 6,
+  },
+
+  abilityText: {
+    fontSize: 14,
+    marginLeft: 6,
   },
 });
