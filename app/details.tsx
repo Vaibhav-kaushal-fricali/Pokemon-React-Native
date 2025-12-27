@@ -63,10 +63,7 @@ export default function Details() {
         <Text style={styles.title}>Details of {name}</Text>
         {pokeDetails && (
           <View style={styles.card}>
-            <Image
-              source={{ uri: pokeDetails.image }}
-              style={styles.image}
-            />
+            <Image source={{ uri: pokeDetails.image }} style={styles.image} />
             <Text style={styles.details}>
               {" "}
               Height of this {params.name} is: {pokeDetails.height}{" "}
@@ -82,13 +79,16 @@ export default function Details() {
               </Text>
             ))}
             <Text style={styles.details}>Types:</Text>
-            {pokeDetails.types.map((type) => (
-              <Text style={styles.subType} key={type}>
-                • {type}
-              </Text>
-            ))}
+            <View style={styles.typeContainer}>
+              {pokeDetails.types.map((type) => (
+                <View style={styles.typePill}>
+                  <Text style={styles.typeText} key={type}>
+                    • {type}
+                  </Text>
+                </View>
+              ))}
+            </View>
           </View>
-
         )}
       </ScrollView>
     </>
@@ -128,10 +128,27 @@ const styles = StyleSheet.create({
     height: 180,
     marginBottom: 12,
   },
-  title:{
+  title: {
     fontSize: 26,
     fontWeight: "bold",
     textTransform: "capitalize",
     marginBottom: 8,
-  }
+  },
+  typeContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+    justifyContent: "center",
+  },
+  typePill: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    backgroundColor: "#eee",
+  },
+  typeText: {
+    fontSize: 14,
+    fontWeight: "600",
+    textTransform: "capitalize",
+  },
 });
