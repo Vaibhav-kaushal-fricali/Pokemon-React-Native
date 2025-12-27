@@ -60,12 +60,12 @@ export default function Details() {
           alignItems: "center",
         }}
       >
-        <Text style={styles.text}>Details of {name}</Text>
+        <Text style={styles.title}>Details of {name}</Text>
         {pokeDetails && (
-          <>
+          <View style={styles.card}>
             <Image
               source={{ uri: pokeDetails.image }}
-              style={{ width: 150, height: 150 }}
+              style={styles.image}
             />
             <Text style={styles.details}>
               {" "}
@@ -77,7 +77,9 @@ export default function Details() {
             </Text>
             <Text style={styles.details}>Abilities: </Text>
             {pokeDetails.abilities.map((ability, index) => (
-              <Text style={styles.subType} key={index}>• {ability}</Text>
+              <Text style={styles.subType} key={index}>
+                • {ability}
+              </Text>
             ))}
             <Text style={styles.details}>Types:</Text>
             {pokeDetails.types.map((type) => (
@@ -85,7 +87,8 @@ export default function Details() {
                 • {type}
               </Text>
             ))}
-          </>
+          </View>
+
         )}
       </ScrollView>
     </>
@@ -101,11 +104,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   details: {
-    fontSize: 20,
-    fontWeight: "400",
+    fontSize: 18,
+    marginVertical: 4,
   },
   subType: {
     fontSize: 18,
     fontStyle: "italic",
+  },
+  card: {
+    backgroundColor: "#fff",
+    padding: 16,
+    borderRadius: 12,
+    width: "100%",
+    alignItems: "center",
+    elevation: 9,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  image: {
+    width: 180,
+    height: 180,
+    marginBottom: 12,
+  },
+  title:{
+    fontSize: 26,
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    marginBottom: 8,
   }
 });
