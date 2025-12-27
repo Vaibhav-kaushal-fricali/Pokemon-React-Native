@@ -6,7 +6,6 @@ import { Stack } from "expo-router";
 import { Background } from "@react-navigation/elements";
 
 export default function Details() {
-  
   const colorsByType: Record<string, string> = {
     normal: "#A8A77A",
     fire: "#EE8130",
@@ -104,9 +103,14 @@ export default function Details() {
             <Text style={styles.details}>Types:</Text>
             <View style={styles.typeContainer}>
               {pokeDetails.types.map((type) => (
-                <View style={[styles.typePill, {backgroundColor: colorsByType[type] || "#ccc"}]} >
+                <View
+                  style={[
+                    styles.typePill,
+                    { backgroundColor: colorsByType[type] || "#ccc" },
+                  ]}
+                >
                   <Text style={styles.typeText} key={type}>
-                     {type}
+                    {type}
                   </Text>
                 </View>
               ))}
