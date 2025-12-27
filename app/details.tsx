@@ -157,20 +157,19 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "#fff",
-    padding: 16,
-    borderRadius: 12,
+    padding: 20,
+    borderRadius: 20,
     width: "100%",
     alignItems: "center",
-    elevation: 9,
+    elevation: 12,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.2,
-    shadowRadius: 4,
+    shadowRadius: 8,
   },
   image: {
-    width: 180,
-    height: 180,
-    marginBottom: 12,
+    width: 160,
+    height: 160,
   },
   title: {
     fontSize: 26,
@@ -197,7 +196,11 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 20,
+    backgroundColor: "#f6f8fc",
+    padding: 16,
+    borderRadius: 16,
+    width: "100%",
   },
 
   statsRow: {
@@ -213,6 +216,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#f2f2f2",
     minWidth: 100,
+    elevation: 4,
   },
 
   statLabel: {
@@ -231,9 +235,9 @@ const styles = StyleSheet.create({
   },
 
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 6,
+    fontSize: 18,
+    fontWeight: 800,
+    marginBottom: 8,
   },
 
   abilityText: {
