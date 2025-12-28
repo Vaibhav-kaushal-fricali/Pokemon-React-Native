@@ -95,7 +95,7 @@ export default function Details() {
 
   return (
     <>
-      <Stack.Screen options={{ title: params.name as string }} />
+      <Stack.Screen options={{ title: params.name as string }} /> {/* iski koi zarrorat nhi waise bas modal ke top pe naam likhega */}
       <ScrollView
         contentContainerStyle={{
           gap: 16,
