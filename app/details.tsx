@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Pressable, ScrollView, Text, View, StyleSheet } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  Animated,
+} from "react-native";
 import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import { Stack } from "expo-router";
@@ -31,7 +38,7 @@ export default function Details() {
     height: number;
     weight: number;
     image: string;
-    types: string[]; //here types is array of objects which are strings so string[]
+    types: string[]; //here "types" is array of objects which are strings so string[]
     abilities: string[];
   };
   const params = useLocalSearchParams();
@@ -41,7 +48,8 @@ export default function Details() {
     params.name.toString().charAt(0).toUpperCase() + params.name.slice(1); //this to capitalise the first word and use that
   // console.log("Name:", name)
   const [pokeDetails, setPokeDetails] = useState<PokemonDetails | null>(null); // do i need to write null or i can leave () as it is?? => Ans) () is undefined, whereas null means clearly we have nothing yet,,, If data comes later → start with null
-
+  const fadeAnim = useState(new Animated.Value(0))[0];
+  const slideAnim = useState(new Animated.Value(20))[0];
   useEffect(() => {
     if (params.name) {
       fetchPokemonByName();
@@ -65,7 +73,21 @@ export default function Details() {
         abilities: data.abilities.map((item: any) => item.ability.name),
       };
       setPokeDetails(cleanedPokemon);
-      console.log("Cleaned pokemon data", cleanedPokemon);
+      //-------- Animated thingy --------
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 400,
+          useNativeDriver: true,
+        }),
+        Animated.timing(slideAnim, {
+          toValue: 0,
+          duration: 400,
+          useNativeDriver: true,
+        }),
+      ]).start();
+
+      // console.log("Cleaned pokemon data", cleanedPokemon);
     } catch (error) {
       console.error("Error fetching pokemon details:", error);
     }
@@ -84,7 +106,12 @@ export default function Details() {
       >
         <Text style={styles.title}>Details of {name}</Text>
         {pokeDetails && (
-          <View style={styles.card}>
+          <Animated.View
+            style={[
+              styles.card,
+              { opacity: fadeAnim, transform: [{ translateY: slideAnim }] },
+            ]}
+          >
             {/*Header Section*/}
             <View>
               <Image source={{ uri: pokeDetails.image }} style={styles.image} />
@@ -132,7 +159,7 @@ export default function Details() {
                 </Text>
               ))}
             </View>
-          </View>
+          </Animated.View>
         )}
       </ScrollView>
     </>
