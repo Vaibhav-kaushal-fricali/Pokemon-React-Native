@@ -149,7 +149,7 @@ export default function Details() {
                 ))}
               </View>
             </View>
-
+{/** */}
             {/* 4️⃣ ABILITIES */}
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Abilities</Text>
