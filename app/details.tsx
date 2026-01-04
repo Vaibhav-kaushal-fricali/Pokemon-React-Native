@@ -95,7 +95,8 @@ export default function Details() {
 
   return (
     <>
-      <Stack.Screen options={{ title: params.name as string }} /> {/* iski koi zarrorat nhi waise bas modal ke top pe naam likhega */}
+      <Stack.Screen options={{ title: params.name as string }} />{" "}
+      {/* iski koi zarrorat nhi waise bas modal ke top pe naam likhega */}
       <ScrollView
         contentContainerStyle={{
           gap: 16,
@@ -113,7 +114,13 @@ export default function Details() {
             ]}
           >
             {/*Header Section*/}
-            <View style={{justifyContent:"center", alignItems:"center", alignContent:"center"}}>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
               <Image source={{ uri: pokeDetails.image }} style={styles.image} />
               <Text style={styles.title}>{name}</Text>
             </View>
@@ -149,7 +156,6 @@ export default function Details() {
                 ))}
               </View>
             </View>
-{/** */}
             {/* 4️⃣ ABILITIES */}
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Abilities</Text>
@@ -203,9 +209,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "capitalize",
     marginBottom: 8,
-    justifyContent:"center",
-    alignContent:"center",
-    alignItems:"center",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
   },
   typeContainer: {
     flexDirection: "row",
