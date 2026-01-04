@@ -10,9 +10,14 @@ import {
 import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import { Stack } from "expo-router";
+import { useColorScheme } from "react-native";
+import Colors from "@/constants/Colors";
 import { Background } from "@react-navigation/elements";
 
 export default function Details() {
+  const colorScheme = useColorScheme(); // device ka theme lega "Light" || "Dark"
+  const theme = Colors[colorScheme || "light"];
+
   const colorsByType: Record<string, string> = {
     normal: "#A8A77A",
     fire: "#EE8130",
@@ -103,14 +108,21 @@ export default function Details() {
           padding: 16,
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: theme.background,
         }}
       >
-        <Text style={styles.title}>Details of {name}</Text>
+        <Text style={[styles.title, { color: theme.text }]}>
+          Details of {name}
+        </Text>
         {pokeDetails && (
           <Animated.View
             style={[
               styles.card,
-              { opacity: fadeAnim, transform: [{ translateY: slideAnim }] },
+              {
+                backgroundColor: theme.card,
+                opacity: fadeAnim,
+                transform: [{ translateY: slideAnim }],
+              },
             ]}
           >
             {/*Header Section*/}
@@ -122,26 +134,32 @@ export default function Details() {
               }}
             >
               <Image source={{ uri: pokeDetails.image }} style={styles.image} />
-              <Text style={styles.title}>{name}</Text>
+              <Text style={[styles.title, { color: theme.text }]}>{name}</Text>
             </View>
             {/**/}
 
             {/* STATS Section*/}
             <View style={styles.statsRow}>
               <View style={styles.statBox}>
-                <Text style={styles.statLabel}>Height</Text>
+                <Text style={[styles.statLabel, { color: theme.subText }]}>
+                  Height
+                </Text>
                 <Text style={styles.statValue}>{pokeDetails.height}</Text>
               </View>
 
               <View style={styles.statBox}>
-                <Text style={styles.statLabel}>Weight</Text>
+                <Text style={[styles.statLabel, { color: theme.subText }]}>
+                  Weight
+                </Text>
                 <Text style={styles.statValue}>{pokeDetails.weight}</Text>
               </View>
             </View>
 
             {/* Types */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Types</Text>
+              <Text style={[styles.sectionTitle, { color: theme.text }]}>
+                Types
+              </Text>
               <View style={styles.typeContainer}>
                 {pokeDetails.types.map((type) => (
                   <View
@@ -158,9 +176,14 @@ export default function Details() {
             </View>
             {/* 4️⃣ ABILITIES */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Abilities</Text>
+              <Text style={[styles.sectionTitle, { color: theme.text }]}>
+                Abilities
+              </Text>
               {pokeDetails.abilities.map((ability, index) => (
-                <Text key={index} style={styles.abilityText}>
+                <Text
+                  key={index}
+                  style={[styles.sectionTitle, { color: theme.text }]}
+                >
                   • {ability}
                 </Text>
               ))}

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Pressable, ScrollView, Text, View, StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
+import { useColorScheme } from "react-native";
+import Colors from "@/constants/Colors";
 
 // "name": "bulbasaur", "url": "https://pokeapi.co/api/v2/pokemon/1/"
 
@@ -38,6 +40,8 @@ const colorsByType = {
 };
 
 export default function Index() {
+  const colorScheme = useColorScheme(); // device ka theme lega "Light" || "Dark"
+  const theme = Colors[colorScheme || "light"];
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
 
   // console.log(JSON.stringify(pokemon[0], null, 2));
@@ -75,7 +79,7 @@ export default function Index() {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ gap: 16, padding: 16 }}>
+    <ScrollView contentContainerStyle={{ gap: 16, padding: 16, backgroundColor: theme.background, }}>
       {pokemon.map((pokemon) => (
         <Link
           key={pokemon.name}
